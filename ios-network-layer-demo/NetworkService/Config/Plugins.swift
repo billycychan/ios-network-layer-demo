@@ -9,18 +9,18 @@ import Foundation
 import Moya
 import ProgressHUD
 
-static var plugins: [PluginType] {
+var plugins: [PluginType] {
         let activityPlugin = NetworkActivityPlugin { (state, targetType) in
             switch state {
             case .began:
                 ProgressHUD.show()
             case .ended:
-                ProgressHUD.dismiss()()
+                ProgressHUD.dismiss()
             }
         }
         
         return [
-            activityPlugin
+            activityPlugin, NetworkLoggerPlugin()
         ]
     }
     
