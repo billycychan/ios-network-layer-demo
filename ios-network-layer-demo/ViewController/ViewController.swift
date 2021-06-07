@@ -9,6 +9,8 @@ import UIKit
 import Alamofire
 import PromiseKit
 import Moya
+import ProgressHUD
+
 class ViewController: UIViewController {
     
     let interactor: ViewControllerInteractorProtocol
@@ -25,13 +27,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        interactor.getRouteList()
-            .done { list in
-                list.forEach { print($0.description) }
-            }
-            .catch { error in
-                print(error)
-            }
+        ProgressHUD.show()
+        firstly {
+            interactor.getRouteList()
+        }.done { routes in
+            routes.forEach { print($0.description) }
+        }.ensure {
+            ProgressHUD.dismiss()
+        }.catch { error in
+            ProgressHUD.showError(error.localizedDescription, image: nil, interaction: false)
+        }
     }
 }
 

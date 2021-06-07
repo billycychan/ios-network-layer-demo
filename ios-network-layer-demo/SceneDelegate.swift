@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        let provider = MoyaProvider<API>(plugins: plugins)
+        let provider = MoyaProvider<MultiTarget>(plugins: plugins)
         let networkService: NetworkServiceProtocol = NetworkService(provider: provider)
         let iteractor = ViewControllerInteractor(networkService: networkService)
         window.rootViewController = ViewController(interactor: iteractor)

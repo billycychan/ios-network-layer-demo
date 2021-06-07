@@ -10,25 +10,26 @@ import Moya
 import PromiseKit
 
 protocol NetworkServiceProtocol {
-    var provider: MoyaProvider<API>  { get }
-    func getRouteList() -> Promise<BaseKMBResponse<[Route]>>
+    var provider: MoyaProvider<MultiTarget>  { get }
+    func request<Request: DecodableResponseTargetType>(_ request: Request) -> Promise<Request.ResponseType>
 }
 
 open class NetworkService: NetworkServiceProtocol {
-    var provider: MoyaProvider<API>
+    var provider: MoyaProvider<MultiTarget>
     
-    init(provider: MoyaProvider<API>) {
+    init(provider: MoyaProvider<MultiTarget>) {
         self.provider = provider
     }
     
-    func getRouteList() -> Promise<BaseKMBResponse<[Route]>> {
-        return Promise<BaseKMBResponse<[Route]>> { seal in
-            provider.request(.getRouteList) { result in
+    func request<Request: DecodableResponseTargetType>(_ request: Request) -> Promise<Request.ResponseType> {
+        let target = MultiTarget.init(request)
+        return Promise<Request.ResponseType> { seal in
+            provider.request(target) { result in
                 switch result {
                 case .success(let response):
                     do {
-                        let list = try response.map(BaseKMBResponse<[Route]>.self)
-                        seal.fulfill(list)
+                        let mappedResponse = try response.map(Request.ResponseType.self)
+                        seal.fulfill(mappedResponse)
                     } catch {
                         seal.reject(error)
                     }
