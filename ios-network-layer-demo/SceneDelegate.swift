@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let iteractor = ViewControllerInteractor(networkService: networkService)
         window.rootViewController = ViewController(interactor: iteractor)
         window.makeKeyAndVisible()
+        AppDelegate.shared.window = window
         self.window = window
     }
 

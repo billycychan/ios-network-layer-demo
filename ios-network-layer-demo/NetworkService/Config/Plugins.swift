@@ -20,7 +20,7 @@ var plugins: [PluginType] {
         }
         
         return [
-//            activityPlugin, NetworkLoggerPlugin()
+            activityPlugin, NetworkLoggerPlugin()
         ]
     }
     

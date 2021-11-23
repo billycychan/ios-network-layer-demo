@@ -22,6 +22,7 @@ public class ViewControllerInteractor: ViewControllerInteractorProtocol {
     
     func getRouteList() -> Promise<[Route]>  {
         return Promise<[Route]> { seal in
+            let routeList = RouteAPI.GetRouteList()
             networkService.request(RouteAPI.GetRouteList()).done { response in
                 seal.fulfill(response.data)
             }.catch { error in

@@ -27,15 +27,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        ProgressHUD.show()
         firstly {
             interactor.getRouteList()
         }.done { routes in
-            routes.forEach { print($0.description) }
-        }.ensure {
-            ProgressHUD.dismiss()
+            print("done")
+            routes.forEach {
+                print($0)
+            }
+            ProgressHUD.showSuccess("success")
         }.catch { error in
-            ProgressHUD.showError(error.localizedDescription, image: nil, interaction: false)
+            print("error")
+            ProgressHUD.showError("error")
         }
     }
 }
