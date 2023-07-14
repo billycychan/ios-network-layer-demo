@@ -1,18 +1,18 @@
 PODS:
-  - Alamofire (5.4.3)
+  - Alamofire (5.7.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - ProgressHUD (13.6)
-  - PromiseKit (6.15.3):
-    - PromiseKit/CorePromise (= 6.15.3)
-    - PromiseKit/Foundation (= 6.15.3)
-    - PromiseKit/UIKit (= 6.15.3)
-  - PromiseKit/CorePromise (6.15.3)
-  - PromiseKit/Foundation (6.15.3):
+  - ProgressHUD (13.7.2)
+  - PromiseKit (6.18.1):
+    - PromiseKit/CorePromise (= 6.18.1)
+    - PromiseKit/Foundation (= 6.18.1)
+    - PromiseKit/UIKit (= 6.18.1)
+  - PromiseKit/CorePromise (6.18.1)
+  - PromiseKit/Foundation (6.18.1):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.15.3):
+  - PromiseKit/UIKit (6.18.1):
     - PromiseKit/CorePromise
 
 DEPENDENCIES:
@@ -28,11 +28,11 @@ SPEC REPOS:
     - PromiseKit
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
-  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
+  ProgressHUD: 093d24ca970f191744017bee2649e37d0cd1c5b9
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
 
-PODFILE CHECKSUM: 94e673a67bfa7bcd7088f8b2153da01486b6a256
+PODFILE CHECKSUM: ad8246b64bdbc29ccb6ec9487dc1c157fa5e1c2e
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
